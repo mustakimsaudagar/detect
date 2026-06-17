@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Verification</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#111;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+
+.box{
+    width:90%;
+    max-width:500px;
+    padding:30px;
+    background:#1b1b1b;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
+h1{
+    color:#ff4444;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#ff4444;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.progress{
+    width:100%;
+    background:#333;
+    height:20px;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.bar{
+    height:100%;
+    width:0%;
+    background:#ff4444;
+    transition:1s;
+}
+
+.hidden{
+    display:none;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h1>🔒 Device Security Check</h1>
+
+<div id="content">
+<p>Press Verify to begin security verification.</p>
+</div>
+
+<div class="progress">
+    <div class="bar" id="bar"></div>
+</div>
+
+<button onclick="nextStep()">Verify</button>
+
+</div>
+
+<script>
+let step = 0;
+
+function nextStep(){
+    step++;
+
+    const content = document.getElementById("content");
+    const bar = document.getElementById("bar");
+
+    if(step===1){
+        content.innerHTML="<p>✅ Step 1/5<br>Checking device files...</p>";
+        bar.style.width="20%";
+    }
+    else if(step===2){
+        content.innerHTML="<p>✅ Step 2/5<br>Scanning installed apps...</p>";
+        bar.style.width="40%";
+    }
+    else if(step===3){
+        content.innerHTML="<p>⚠️ Step 3/5<br>Suspicious activity detected...</p>";
+        bar.style.width="60%";
+    }
+    else if(step===4){
+        content.innerHTML="<p>🚨 Step 4/5<br>Potential virus signatures found!</p>";
+        bar.style.width="80%";
+    }
+    else if(step===5){
+        content.innerHTML="<h2 style='color:red'>☠️ VIRUS DETECTED!</h2><p>13 dangerous files found.</p><p>Press Verify again for emergency action.</p>";
+        bar.style.width="100%";
+    }
+    else{
+        content.innerHTML=
+        "<h1 style='color:#00ff66'>😂 PRANK COMPLETE!</h1>" +
+        "<p>No virus was found.</p>" +
+        "<p>Your brother has been successfully pranked! 😆</p>";
+    }
+}
+</script>
+
+</body>
+</html>
